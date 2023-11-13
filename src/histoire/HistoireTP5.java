@@ -16,8 +16,11 @@ public class HistoireTP5 {
 		Ronin roro = new Ronin("Roro", 60, "shochu");
 		Samourai akimoto = new Samourai("Miyamoto", "Akimoto", 80, "saké");
 		Traitre masako = new Traitre("Miyamoto", "Masako", 100, "whisky");
+		Samourai akira = new Traitre("Miyamoto", "Akira", 50, "whisky");
+		Ronin hiro = new Traitre("Miyamoto", "Hiro", 20, "saké");
+		Humain nori = new Traitre("Miyamoto", "Nori", 70, "whisky");
 		
-		/*marco.faireConnaissanceAvec(roro);
+		marco.faireConnaissanceAvec(roro);
 		marco.faireConnaissanceAvec(yaku);
 		marco.faireConnaissanceAvec(chonin);
 		marco.faireConnaissanceAvec(kumi);
@@ -27,7 +30,7 @@ public class HistoireTP5 {
 		
 		akimoto.faireConnaissanceAvec(marco);
 		akimoto.listerConnaissance();
-		akimoto.boire("thé");*/
+		akimoto.boire("thé");
 		
 		masako.faireLeGentil();
 		masako.ranconner(kumi);
