@@ -1,10 +1,13 @@
 package personnages;
 
 public class Humain {
+	private static final int TAILLE_MEMOIRE = 3;
 	protected String nom;
 	protected int argent;
 	private String boisson;
-
+	protected int nbConnaissances = 0; 
+	protected Humain[] memoire = new Humain [TAILLE_MEMOIRE];
+	
 	public Humain(String nom, int argent, String boisson) {
 		this.nom = nom;
 		this.argent = argent;
@@ -48,13 +51,45 @@ public class Humain {
 		}
 	}
 	
-	public void gagnerArgent(int gain) {
+	protected void gagnerArgent(int gain) {
 		this.argent += gain;
 	}
 	
-	public void perdreArgent(int perte) {
+	protected void perdreArgent(int perte) {
 		this.argent -= perte;
 	}
+	
+	private void memoriser(Humain homme) {
+		this.memoire[nbConnaissances%TAILLE_MEMOIRE] = homme;
+		this.nbConnaissances += 1;
+	}
+	
+	private void repondre(Humain homme) {
+		this.direBonjour();
+		this.memoriser(homme);
+	}
+	
+	public void faireConnaissanceAvec(Humain homme2) {
+		this.direBonjour();
+		homme2.repondre(this);
+		this.memoriser(homme2);
+	}
+	
+	public void listerConnaissance() {
+		this.parler("Je connais beaucoup de monde dont : ");
+		if(nbConnaissances>=TAILLE_MEMOIRE) {
+			for(int i=0; i<TAILLE_MEMOIRE; ++i) {
+				System.out.println(memoire[i].getNom()+", ");
+			}
+		}
+		else {
+			for(int i=0; i<nbConnaissances; ++i) {
+				System.out.println(memoire[i].getNom()+", ");
+			}
+		}
+	}
+	
+	
 }
 
 
